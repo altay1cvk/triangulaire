@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👑 ULTIMATE PRO SYSTEM | Version GitHub</title>
+    <title>👑 ULTIMATE PRO SYSTEM | GitHub Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Roboto+Mono:wght@500;700;900&display=swap" rel="stylesheet">
     
     <style>
@@ -34,7 +34,6 @@
             padding: 15px;
         }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(136,68,255,0.2), rgba(0,255,136,0.2));
             border: 4px solid var(--gold);
@@ -67,30 +66,84 @@
             50% { background-position: 100% 50%; }
         }
 
-        .header .subtitle {
-            font-size: 1.4rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(255,215,0,0.6);
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
         }
 
-        .telegram-status {
-            display: inline-block;
-            padding: 10px 20px;
-            background: rgba(0,212,255,0.2);
-            border: 2px solid var(--secondary);
+        .btn-control {
+            padding: 15px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            border: none;
             border-radius: 15px;
-            margin-top: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
         }
 
-        .telegram-status.connected {
+        .btn-start {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
+            box-shadow: 0 0 30px rgba(0,255,136,0.5);
+        }
+
+        .btn-start:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(0,255,136,0.9);
+        }
+
+        .btn-start:disabled {
+            background: #333;
+            color: #666;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-stop {
+            background: linear-gradient(135deg, var(--accent), #ff3333);
+            color: #fff;
+            box-shadow: 0 0 30px rgba(255,0,128,0.5);
+        }
+
+        .btn-stop:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255,0,128,0.9);
+        }
+
+        .btn-stop:disabled {
+            background: #333;
+            color: #666;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 15px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .status-indicator.running {
             background: rgba(0,255,136,0.2);
-            border-color: var(--primary);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .status-indicator.stopped {
+            background: rgba(255,0,128,0.2);
+            border: 2px solid var(--accent);
+            color: var(--accent);
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 10px;
             margin-top: 20px;
         }
@@ -101,52 +154,14 @@
             color: #000;
             border-radius: 15px;
             font-weight: 900;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-align: center;
             box-shadow: 0 0 20px rgba(255,215,0,0.5);
         }
 
-        /* Reste du CSS identique à la version précédente... */
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 10px;
-        }
-
-        .tab {
-            padding: 12px 25px;
-            background: var(--card);
-            border: 2px solid var(--border);
-            border-radius: 10px 10px 0 0;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-
-        .tab:hover {
-            border-color: var(--gold);
-            transform: translateY(-3px);
-        }
-
-        .tab.active {
-            background: linear-gradient(135deg, var(--gold), var(--warning));
-            color: #000;
-            border-color: var(--gold);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
         .main-grid {
             display: grid;
-            grid-template-columns: 400px 1fr 450px;
+            grid-template-columns: 380px 1fr 420px;
             gap: 15px;
         }
 
@@ -156,20 +171,27 @@
             gap: 15px;
         }
 
-        .progress-card {
-            background: linear-gradient(135deg, var(--card), #0f0f0f);
-            border: 3px solid var(--gold);
+        .card {
+            background: var(--card);
+            border: 2px solid var(--border);
             border-radius: 15px;
-            padding: 22px;
+            padding: 20px;
+        }
+
+        .card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .progress-card {
+            border: 3px solid var(--gold);
             box-shadow: 0 0 50px rgba(255,215,0,0.4);
         }
 
         .progress-card h3 {
-            font-family: 'Orbitron', sans-serif;
             color: var(--gold);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            text-align: center;
         }
 
         .capital-display {
@@ -220,12 +242,6 @@
             border-radius: 10px;
             padding: 12px;
             text-align: center;
-            transition: all 0.3s;
-        }
-
-        .stat-box:hover {
-            border-color: var(--gold);
-            transform: scale(1.05);
         }
 
         .stat-box .label {
@@ -242,22 +258,11 @@
         }
 
         .console-card {
-            background: var(--card);
-            border: 2px solid var(--secondary);
-            border-radius: 15px;
-            padding: 20px;
-            height: 250px;
-        }
-
-        .console-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--secondary);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            height: 300px;
         }
 
         .console {
-            height: calc(100% - 40px);
+            height: calc(100% - 50px);
             background: #000;
             border: 1px solid var(--border);
             border-radius: 8px;
@@ -286,26 +291,20 @@
         }
 
         .signals-card {
-            background: var(--card);
             border: 3px solid var(--gold);
-            border-radius: 15px;
-            padding: 22px;
             box-shadow: 0 0 50px rgba(255,215,0,0.4);
         }
 
         .signals-card h3 {
-            font-family: 'Orbitron', sans-serif;
             color: var(--gold);
             font-size: 1.4rem;
-            margin-bottom: 15px;
-            text-align: center;
         }
 
         .signals-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
             gap: 15px;
-            max-height: 600px;
+            max-height: 550px;
             overflow-y: auto;
         }
 
@@ -313,25 +312,8 @@
             background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(136,68,255,0.1));
             border: 3px solid var(--gold);
             border-radius: 15px;
-            padding: 22px;
-            transition: all 0.3s;
+            padding: 20px;
             position: relative;
-        }
-
-        .signal-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 15px 50px rgba(255,215,0,0.8);
-        }
-
-        .signal-card.elite {
-            border-color: var(--gold);
-            box-shadow: 0 0 70px rgba(255,215,0,0.9);
-            animation: elite-pulse 2s infinite;
-        }
-
-        @keyframes elite-pulse {
-            0%, 100% { box-shadow: 0 0 60px rgba(255,215,0,0.9); }
-            50% { box-shadow: 0 0 120px rgba(255,215,0,1); }
         }
 
         .signal-card.elite::before {
@@ -350,7 +332,6 @@
         .signal-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             margin-bottom: 15px;
             padding-bottom: 12px;
             border-bottom: 2px solid var(--border);
@@ -358,14 +339,14 @@
 
         .signal-pair {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.9rem;
+            font-size: 1.8rem;
             font-weight: 900;
             color: var(--gold);
         }
 
         .signal-score {
             font-family: 'Roboto Mono', monospace;
-            font-size: 1.7rem;
+            font-size: 1.6rem;
             font-weight: 900;
             color: var(--gold);
         }
@@ -376,13 +357,7 @@
             border-radius: 12px;
             padding: 15px;
             text-align: center;
-            margin-bottom: 12px;
-        }
-
-        .profit-box .label {
-            font-size: 0.8rem;
-            color: #888;
-            margin-bottom: 6px;
+            margin: 12px 0;
         }
 
         .profit-box .amount {
@@ -403,9 +378,7 @@
             font-weight: 900;
             font-size: 1.1rem;
             cursor: pointer;
-            text-transform: uppercase;
             transition: all 0.3s;
-            box-shadow: 0 0 30px rgba(255,215,0,0.5);
         }
 
         .btn-execute:hover {
@@ -419,7 +392,7 @@
             color: #666;
         }
 
-        @media (max-width: 2000px) {
+        @media (max-width: 1800px) {
             .main-grid {
                 grid-template-columns: 1fr;
             }
@@ -428,29 +401,42 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <h1>👑 ULTIMATE PRO SYSTEM</h1>
-            <div class="subtitle">
-                100% Calculs Mathématiques • Notifications Telegram • Persistance Totale
+            <div style="font-size: 1.3rem; color: var(--gold); margin-bottom: 15px;">
+                100% Réel • Notifications Telegram • Persistance Totale
             </div>
-            <div class="telegram-status" id="telegram-status">
-                📱 Telegram: Connexion...
+            
+            <div class="controls">
+                <button class="btn-control btn-start" id="btn-start" onclick="startSystem()">
+                    🚀 START SYSTEM
+                </button>
+                <button class="btn-control btn-stop" id="btn-stop" onclick="stopSystem()" disabled>
+                    ⛔ STOP SYSTEM
+                </button>
             </div>
-            <div class="features-grid" style="margin-top: 20px;">
-                <div class="feature-badge">PERSISTANCE TOTALE</div>
-                <div class="feature-badge">NOTIFICATIONS TELEGRAM</div>
+            
+            <div class="status-indicator stopped" id="status">
+                ⭕ SYSTÈME ARRÊTÉ
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-badge">PERSISTANCE GITHUB</div>
+                <div class="feature-badge">TELEGRAM LIVE</div>
+                <div class="feature-badge">RÉGIME AUTO (ADX)</div>
                 <div class="feature-badge">MULTI-EXCHANGE</div>
                 <div class="feature-badge">ANTI-SPOOFING</div>
+                <div class="feature-badge">DÉCORRÉLATION BTC</div>
+                <div class="feature-badge">RANKING OPTIMAL</div>
                 <div class="feature-badge">100% HALAL</div>
             </div>
         </div>
 
-        <!-- Dashboard simplifié pour l'exemple -->
         <div class="main-grid">
+            <!-- Left Panel -->
             <div class="left-panel">
-                <div class="progress-card">
-                    <h3>👑 CHALLENGE</h3>
+                <div class="card progress-card">
+                    <h3>👑 CHALLENGE 300€→10K</h3>
                     <div class="capital-display">
                         <div class="value" id="capital">300€</div>
                     </div>
@@ -478,42 +464,77 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="center-panel">
-                <div class="console-card">
-                    <h3>📡 CONSOLE</h3>
-                    <div class="console" id="console">
-                        <div class="log info"><span class="time">[00:00:00]</span> Initialisation...</div>
+                <div class="card">
+                    <h3 style="color: var(--warning);">🎯 RÉGIME MARCHÉ</h3>
+                    <div style="background: rgba(255,170,0,0.1); border: 2px solid var(--warning); border-radius: 12px; padding: 15px; text-align: center; margin-bottom: 15px;">
+                        <div style="font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--warning); margin-bottom: 8px;" id="regime-name">INITIALIZING</div>
+                        <div style="font-size: 0.85rem; color: #aaa;" id="regime-desc">Analyse...</div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="label">ADX</div>
+                            <div class="value" id="adx">--</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="label">Trend</div>
+                            <div class="value" id="trend">--</div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="signals-card">
+                <div class="card">
+                    <h3 style="color: var(--secondary);">📱 TELEGRAM</h3>
+                    <div style="background: rgba(0,212,255,0.1); border: 1px solid var(--secondary); border-radius: 10px; padding: 15px; margin-bottom: 12px;">
+                        <div style="font-weight: 700; color: var(--secondary); margin-bottom: 8px;">Status</div>
+                        <div style="font-size: 0.85rem; color: #aaa;" id="telegram-info">Prêt</div>
+                    </div>
+                    <div style="background: rgba(0,212,255,0.1); border: 1px solid var(--secondary); border-radius: 10px; padding: 15px;">
+                        <div style="font-weight: 700; color: var(--secondary); margin-bottom: 8px;">Notifications</div>
+                        <div style="font-size: 1.5rem; font-family: 'Orbitron', sans-serif; color: var(--secondary); text-align: center;" id="notif-count">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Panel -->
+            <div class="center-panel">
+                <div class="card console-card">
+                    <h3 style="color: var(--secondary);">📡 CONSOLE</h3>
+                    <div class="console" id="console">
+                        <div class="log info"><span class="time">[00:00:00]</span> Système initialisé</div>
+                        <div class="log warning"><span class="time">[00:00:00]</span> Appuyez sur START pour démarrer</div>
+                    </div>
+                </div>
+
+                <div class="card signals-card">
                     <h3>👑 SIGNALS ELITE</h3>
                     <div class="signals-grid" id="signals">
                         <div class="empty">
                             <div style="font-size: 4rem; margin-bottom: 15px;">👑</div>
-                            <div>Analyse en cours...</div>
+                            <div>En attente de démarrage...</div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Right Panel -->
             <div class="right-panel">
-                <div style="background: var(--card); border: 2px solid var(--secondary); border-radius: 15px; padding: 20px;">
-                    <h3 style="font-family: 'Orbitron', sans-serif; color: var(--secondary); font-size: 1.2rem; margin-bottom: 15px; text-align: center;">
-                        📱 NOTIFICATIONS
-                    </h3>
-                    <div style="background: rgba(0,212,255,0.1); border: 1px solid var(--secondary); border-radius: 10px; padding: 15px; margin-bottom: 12px;">
-                        <div style="font-weight: 700; color: var(--secondary); margin-bottom: 8px;">Status Telegram</div>
-                        <div style="font-size: 0.85rem; color: #aaa;" id="telegram-info">
-                            En attente de connexion...
-                        </div>
+                <div class="card">
+                    <h3 style="color: var(--primary);">🎯 RANKING OPTIMAL</h3>
+                    <div style="background: rgba(255,215,0,0.1); border: 2px solid var(--gold); border-radius: 10px; padding: 15px; margin-bottom: 15px; text-align: center;">
+                        <div style="font-size: 0.85rem; color: #aaa; margin-bottom: 8px;">Top Crypto Aujourd'hui</div>
+                        <div style="font-family: 'Orbitron', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--gold);" id="top-crypto">--</div>
                     </div>
-                    <div style="background: rgba(0,212,255,0.1); border: 1px solid var(--secondary); border-radius: 10px; padding: 15px;">
-                        <div style="font-weight: 700; color: var(--secondary); margin-bottom: 8px;">Notifications Envoyées</div>
-                        <div style="font-size: 1.5rem; font-family: 'Orbitron', sans-serif; color: var(--secondary); text-align: center;" id="notif-count">0</div>
+                    <div id="ranking" style="max-height: 400px; overflow-y: auto;"></div>
+                </div>
+
+                <div class="card">
+                    <h3 style="color: var(--accent);">🔮 ANOMALIES BTC</h3>
+                    <div style="background: rgba(255,0,128,0.1); border: 2px solid var(--accent); border-radius: 10px; padding: 15px; text-align: center; margin-bottom: 15px;">
+                        <div style="font-size: 2rem; font-family: 'Orbitron', sans-serif; font-weight: 900; color: var(--accent);" id="anomalies-count">0</div>
+                        <div style="font-size: 0.8rem; color: #aaa;">Leaders Détectés</div>
                     </div>
+                    <div id="anomalies" style="max-height: 200px; overflow-y: auto;"></div>
                 </div>
             </div>
         </div>
@@ -521,17 +542,12 @@
 
     <script>
         // ==========================================
-        // CONFIGURATION TELEGRAM
+        // CONFIGURATION
         // ==========================================
         
         const TELEGRAM_BOT_TOKEN = '8317338475:AAH4_etAd7VsUWHk_4M-HNWZtWp69pAEEpo';
-        let TELEGRAM_CHAT_ID = null;
-        let notificationsSent = 0;
+        const TELEGRAM_CHAT_ID = 1719073848; // Hardcodé depuis ton JSON
 
-        // ==========================================
-        // PERSISTANCE COMPLÈTE
-        // ==========================================
-        
         const PAIRS = [
             'BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT', 'ADAUSDT',
             'AVAXUSDT', 'DOGEUSDT', 'DOTUSDT', 'MATICUSDT', 'LINKUSDT', 'UNIUSDT',
@@ -540,26 +556,39 @@
             'SUIUSDT', 'SEIUSDT', 'TAOUSDT', 'RENDERUSDT', 'TIAUSDT', 'PEPEUSDT'
         ];
 
-        const STORAGE_KEY = 'ultimate_pro_persistent';
+        const STORAGE_KEY = 'ultimate_pro_github';
+
+        let systemRunning = false;
+        let scanInterval = null;
+        let notificationsSent = 0;
+
+        // ==========================================
+        // PERSISTANCE
+        // ==========================================
         
+        let state = {
+            capital: 300,
+            day: 1,
+            trades: 0,
+            profit: 0,
+            wins: 0,
+            history: {},
+            btcData: null,
+            signals: [],
+            regime: 'neutral',
+            ranking: [],
+            running: false
+        };
+
         function saveState() {
-            const dataToSave = {
-                capital: state.capital,
-                day: state.day,
-                trades: state.trades,
-                profit: state.profit,
-                wins: state.wins,
-                losses: state.losses,
-                history: state.history,
-                backtestData: state.backtestData,
+            const data = {
+                ...state,
                 notificationsSent: notificationsSent,
-                chatId: TELEGRAM_CHAT_ID,
                 lastSave: Date.now()
             };
             
             try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
-                log('💾 Données sauvegardées', 'success');
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
             } catch (e) {
                 log(`❌ Erreur sauvegarde: ${e.message}`, 'error');
             }
@@ -568,20 +597,31 @@
         function loadState() {
             try {
                 const saved = localStorage.getItem(STORAGE_KEY);
-                if (!saved) return null;
+                if (!saved) return;
                 
                 const data = JSON.parse(saved);
                 
-                // Vérifier que les données ne sont pas trop anciennes (max 7 jours)
-                if (Date.now() - data.lastSave > 7 * 24 * 60 * 60 * 1000) {
-                    log('⚠️ Données trop anciennes, réinitialisation', 'warning');
-                    return null;
+                // Restaurer l'état
+                state.capital = data.capital || 300;
+                state.day = data.day || 1;
+                state.trades = data.trades || 0;
+                state.profit = data.profit || 0;
+                state.wins = data.wins || 0;
+                state.history = data.history || {};
+                notificationsSent = data.notificationsSent || 0;
+                
+                // Si le système était en cours d'exécution, le redémarrer
+                if (data.running) {
+                    log('🔄 Restauration du système en cours...', 'warning');
+                    setTimeout(() => {
+                        startSystem(true); // true = restauration silencieuse
+                    }, 2000);
                 }
                 
-                return data;
+                log('✅ État restauré', 'success');
+                log(`💰 Capital: ${state.capital.toFixed(2)}€ | Trades: ${state.trades}`, 'info');
             } catch (e) {
                 log(`❌ Erreur chargement: ${e.message}`, 'error');
-                return null;
             }
         }
 
@@ -597,147 +637,14 @@
         }
 
         // ==========================================
-        // STATE
+        // TELEGRAM
         // ==========================================
         
-        let state = {
-            capital: 300,
-            day: 1,
-            trades: 0,
-            profit: 0,
-            wins: 0,
-            losses: 0,
-            history: {},
-            btcData: null,
-            signals: [],
-            regime: 'neutral',
-            backtestData: [],
-            ranking: []
-        };
-
-        // Charger l'état sauvegardé
-        const savedState = loadState();
-        if (savedState) {
-            state.capital = savedState.capital;
-            state.day = savedState.day;
-            state.trades = savedState.trades;
-            state.profit = savedState.profit;
-            state.wins = savedState.wins;
-            state.losses = savedState.losses || 0;
-            state.history = savedState.history || {};
-            state.backtestData = savedState.backtestData || [];
-            notificationsSent = savedState.notificationsSent || 0;
-            TELEGRAM_CHAT_ID = savedState.chatId || null;
-            
-            log('✅ État restauré depuis la sauvegarde', 'success');
-            log(`💰 Capital: ${state.capital.toFixed(2)}€ | Trades: ${state.trades}`, 'info');
-        } else {
-            log('🆕 Nouveau départ - État initialisé', 'info');
-        }
-
-        // ==========================================
-        // TELEGRAM FUNCTIONS
-        // ==========================================
-        
-        async function initTelegram() {
-            try {
-                // Tester la connexion
-                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getMe`);
-                const data = await response.json();
-                
-                if (data.ok) {
-                    log(`✅ Bot Telegram connecté: @${data.result.username}`, 'telegram');
-                    document.getElementById('telegram-status').textContent = `📱 Telegram: ✓ @${data.result.username}`;
-                    document.getElementById('telegram-status').classList.add('connected');
-                    document.getElementById('telegram-info').textContent = `Connecté à @${data.result.username}`;
-                    
-                    // Obtenir le chat ID
-                    await getChatId();
-                    
-                    return true;
-                } else {
-                    throw new Error('Token invalide');
-                }
-            } catch (e) {
-                log(`❌ Telegram: ${e.message}`, 'error');
-                document.getElementById('telegram-status').textContent = '📱 Telegram: ✗ Erreur';
-                document.getElementById('telegram-info').textContent = `Erreur: ${e.message}`;
-                return false;
-            }
-        }
-
-        async function getChatId() {
-            try {
-                // Récupérer les updates pour obtenir le chat_id
-                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates`);
-                const data = await response.json();
-                
-                if (data.ok && data.result.length > 0) {
-                    // Prendre le dernier message
-                    const lastUpdate = data.result[data.result.length - 1];
-                    TELEGRAM_CHAT_ID = lastUpdate.message.chat.id;
-                    log(`✅ Chat ID obtenu: ${TELEGRAM_CHAT_ID}`, 'telegram');
-                    saveState();
-                } else if (TELEGRAM_CHAT_ID) {
-                    log(`✅ Chat ID restauré: ${TELEGRAM_CHAT_ID}`, 'telegram');
-                } else {
-                    log('⚠️ Envoie /start au bot pour obtenir le Chat ID', 'warning');
-                }
-            } catch (e) {
-                log(`⚠️ Impossible d'obtenir Chat ID: ${e.message}`, 'warning');
-            }
-        }
-
-        async function sendTelegramNotification(signal) {
-            if (!TELEGRAM_CHAT_ID) {
-                log('⚠️ Chat ID non disponible, envoie /start au bot', 'warning');
-                return false;
-            }
-
-            const message = `
-👑 **SIGNAL ELITE DÉTECTÉ** 👑
-
-💎 **${signal.symbol}** | Score: **${signal.indicators.score.toFixed(0)}%**
-
-📊 **INDICATEURS:**
-• RSI: ${signal.indicators.rsi.value.toFixed(1)}
-• Volume: ${signal.indicators.volume.value.toFixed(0)}%
-• Momentum: ${signal.indicators.momentum.value > 0 ? '+' : ''}${signal.indicators.momentum.value.toFixed(2)}%
-• Volatilité: ${signal.indicators.volatility.value.toFixed(2)}%
-
-⏱️ **DURÉE ESTIMÉE:** ${signal.duration.best}
-5min: ${signal.duration['5min']}% | 15min: ${signal.duration['15min']}%
-
-💰 **TRADING:**
-• Prix Actuel: $${signal.currentPrice.toFixed(4)}
-• Profit Estimé: **+${signal.estimatedProfit.toFixed(2)}€** (+${signal.targetProfit.toFixed(1)}%)
-• Position: ${signal.positionSize.toFixed(0)}€
-• Stop-Loss: -${signal.stopLoss.toFixed(2)}%
-
-📋 **INSTRUCTIONS:**
-1️⃣ **Phase 1 (50%):** Achète ${(signal.positionSize * 0.5).toFixed(0)}€ de ${signal.symbol} à $${signal.entryLevels.entry1.price.toFixed(4)}
-
-2️⃣ **Phase 2 (25%):** Si prix atteint $${signal.entryLevels.entry2.price.toFixed(4)} (+0.3%), ajoute ${(signal.positionSize * 0.25).toFixed(0)}€
-
-3️⃣ **Phase 3 (25%):** Si prix atteint $${signal.entryLevels.entry3.price.toFixed(4)} (+0.6%), ajoute ${(signal.positionSize * 0.25).toFixed(0)}€
-
-🛡️ **PROTECTION:**
-• Place stop-loss à $${(signal.currentPrice * (1 - signal.stopLoss / 100)).toFixed(4)}
-• Vends au target: +${signal.targetProfit.toFixed(1)}%
-
-✅ ${signal.indicators.spoofCheck.reason}
-
-⚡ **TRADE SUR BINANCE SPOT (PAS FUTURES)**
-
-🚀 Bonne chance !
-`;
-
+        async function sendTelegramMessage(message) {
             try {
                 const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         chat_id: TELEGRAM_CHAT_ID,
                         text: message,
@@ -750,21 +657,102 @@
                 if (data.ok) {
                     notificationsSent++;
                     document.getElementById('notif-count').textContent = notificationsSent;
-                    log(`📱 Notification Telegram envoyée pour ${signal.symbol}`, 'telegram');
                     saveState();
                     return true;
                 } else {
-                    log(`❌ Erreur Telegram: ${data.description}`, 'error');
+                    log(`❌ Telegram: ${data.description}`, 'error');
                     return false;
                 }
             } catch (e) {
-                log(`❌ Erreur envoi Telegram: ${e.message}`, 'error');
+                log(`❌ Telegram: ${e.message}`, 'error');
                 return false;
             }
         }
 
+        async function sendSignalNotification(signal) {
+            const message = `
+👑 **SIGNAL ELITE DÉTECTÉ** 👑
+
+💎 **${signal.symbol}** | Score: **${signal.indicators.score.toFixed(0)}%**
+
+📊 **INDICATEURS:**
+• RSI: ${signal.indicators.rsi.value.toFixed(1)}
+• Volume: ${signal.indicators.volume.value.toFixed(0)}%
+• Momentum: ${signal.indicators.momentum.value > 0 ? '+' : ''}${signal.indicators.momentum.value.toFixed(2)}%
+
+⏱️ **DURÉE:** ${signal.duration.best}
+
+💰 **TRADING:**
+• Prix: $${signal.currentPrice.toFixed(4)}
+• Profit Estimé: **+${signal.estimatedProfit.toFixed(2)}€**
+• Stop-Loss: -${signal.stopLoss.toFixed(2)}%
+
+📋 **ENTRÉE PROGRESSIVE:**
+1️⃣ Phase 1 (50%): $${signal.entryLevels.entry1.price.toFixed(4)}
+2️⃣ Phase 2 (25%): $${signal.entryLevels.entry2.price.toFixed(4)} (+0.3%)
+3️⃣ Phase 3 (25%): $${signal.entryLevels.entry3.price.toFixed(4)} (+0.6%)
+
+⚡ **BINANCE SPOT UNIQUEMENT**
+`;
+
+            return await sendTelegramMessage(message);
+        }
+
         // ==========================================
-        // API & INDICATEURS (version simplifiée)
+        // CONTRÔLES START/STOP
+        // ==========================================
+        
+        async function startSystem(silent = false) {
+            if (systemRunning) return;
+            
+            systemRunning = true;
+            state.running = true;
+            saveState();
+            
+            document.getElementById('btn-start').disabled = true;
+            document.getElementById('btn-stop').disabled = false;
+            document.getElementById('status').className = 'status-indicator running';
+            document.getElementById('status').textContent = '✅ SYSTÈME EN MARCHE';
+            
+            if (!silent) {
+                log('🚀 Système démarré', 'success');
+                await sendTelegramMessage('🚀 **SYSTÈME DÉMARRÉ**\n\nLe bot est maintenant actif et scanne le marché toutes les 60 secondes.\nVous recevrez une notification pour chaque signal Elite détecté.');
+                document.getElementById('telegram-info').textContent = '✅ Système actif';
+            } else {
+                log('🔄 Système redémarré automatiquement', 'success');
+            }
+            
+            // Premier scan immédiat
+            setTimeout(scan, 2000);
+            
+            // Scans réguliers
+            scanInterval = setInterval(scan, 60000); // Toutes les 60 secondes
+        }
+
+        async function stopSystem() {
+            if (!systemRunning) return;
+            
+            systemRunning = false;
+            state.running = false;
+            saveState();
+            
+            if (scanInterval) {
+                clearInterval(scanInterval);
+                scanInterval = null;
+            }
+            
+            document.getElementById('btn-start').disabled = false;
+            document.getElementById('btn-stop').disabled = true;
+            document.getElementById('status').className = 'status-indicator stopped';
+            document.getElementById('status').textContent = '⛔ SYSTÈME ARRÊTÉ';
+            
+            log('⛔ Système arrêté', 'warning');
+            await sendTelegramMessage('⛔ **SYSTÈME ARRÊTÉ**\n\nLe bot est maintenant inactif.\nAucune nouvelle notification ne sera envoyée.');
+            document.getElementById('telegram-info').textContent = '⛔ Système inactif';
+        }
+
+        // ==========================================
+        // API & INDICATEURS
         // ==========================================
         
         async function fetchData() {
@@ -833,6 +821,51 @@
             return 100 - (100 / (1 + avgGain / avgLoss));
         }
         
+        function calcATR(sym) {
+            const hist = state.history[sym];
+            if (!hist || hist.length < 15) return null;
+            
+            let sum = 0;
+            for (let i = hist.length - 14; i < hist.length; i++) {
+                const tr = Math.max(
+                    hist[i].high - hist[i].low,
+                    Math.abs(hist[i].high - hist[i-1].price),
+                    Math.abs(hist[i].low - hist[i-1].price)
+                );
+                sum += tr;
+            }
+            
+            return sum / 14;
+        }
+        
+        function calcADX(sym) {
+            const hist = state.history[sym];
+            if (!hist || hist.length < 15) return null;
+            
+            let sumDX = 0;
+            for (let i = hist.length - 14; i < hist.length; i++) {
+                const high = hist[i].high;
+                const low = hist[i].low;
+                const prevClose = hist[i-1].price;
+                
+                const tr = Math.max(high - low, Math.abs(high - prevClose), Math.abs(low - prevClose));
+                const upMove = high - hist[i-1].high;
+                const downMove = hist[i-1].low - low;
+                
+                const plusDM = upMove > downMove && upMove > 0 ? upMove : 0;
+                const minusDM = downMove > upMove && downMove > 0 ? downMove : 0;
+                
+                if (tr > 0) {
+                    const plusDI = (plusDM / tr) * 100;
+                    const minusDI = (minusDM / tr) * 100;
+                    const dx = Math.abs(plusDI - minusDI) / (plusDI + minusDI) * 100;
+                    sumDX += dx;
+                }
+            }
+            
+            return sumDX / 14;
+        }
+        
         function calcMomentum(sym) {
             const hist = state.history[sym];
             if (!hist || hist.length < 10) return null;
@@ -850,21 +883,38 @@
             return (currentVol / avgVol) * 100;
         }
         
-        function calcATR(sym) {
-            const hist = state.history[sym];
-            if (!hist || hist.length < 15) return null;
+        function detectRegime() {
+            if (!state.btcData) return 'neutral';
             
-            let sum = 0;
-            for (let i = hist.length - 14; i < hist.length; i++) {
-                const tr = Math.max(
-                    hist[i].high - hist[i].low,
-                    Math.abs(hist[i].high - hist[i-1].price),
-                    Math.abs(hist[i].low - hist[i-1].price)
-                );
-                sum += tr;
+            const adx = calcADX('BTCUSDT');
+            const atr = calcATR('BTCUSDT');
+            const momentum = calcMomentum('BTCUSDT');
+            
+            if (!adx || !atr || !momentum) return 'neutral';
+            
+            const volatilityPct = (atr / state.btcData.price) * 100;
+            
+            if (adx > 25 && momentum > 2) return 'strong_bull';
+            else if (adx > 25 && momentum < -2) return 'strong_bear';
+            else if (volatilityPct > 3) return 'high_volatility';
+            else if (adx < 20 && Math.abs(momentum) < 1) return 'ranging';
+            
+            return 'neutral';
+        }
+        
+        function calcDecorrelation(sym) {
+            if (sym === 'BTCUSDT') return 0;
+            
+            const btcMom = calcMomentum('BTCUSDT');
+            const symMom = calcMomentum(sym);
+            
+            if (!btcMom || !symMom) return null;
+            
+            if (Math.abs(btcMom) > 1 && Math.abs(symMom) < 0.5) {
+                return Math.abs(btcMom - symMom);
             }
             
-            return sum / 14;
+            return 0;
         }
         
         function estimateDuration(sym) {
@@ -903,13 +953,37 @@
             return { safe: true, reason: 'Volume réel ✓' };
         }
         
+        function calcOptimalScore(sym, data) {
+            if (!state.btcData) return 0;
+            
+            const atr = calcATR(sym);
+            const momentum = calcMomentum(sym);
+            const btcMom = calcMomentum('BTCUSDT');
+            
+            if (!atr || !momentum || !btcMom) return 0;
+            
+            const volatilityPct = (atr / data.price) * 100;
+            const volatilityScore = volatilityPct >= 0.8 && volatilityPct <= 2.5 ? 30 : 
+                                   volatilityPct >= 0.5 && volatilityPct <= 3 ? 20 : 10;
+            
+            const volumeScore = data.quoteVolume > 100000000 ? 30 : 
+                               data.quoteVolume > 50000000 ? 20 : 10;
+            
+            const decorrelation = Math.abs(momentum - btcMom);
+            const decorrScore = decorrelation > 3 ? 40 : decorrelation > 2 ? 30 : decorrelation > 1 ? 20 : 10;
+            
+            return volatilityScore + volumeScore + decorrScore;
+        }
+        
         function calcConvergence(sym, data) {
             const rsi = calcRSI(sym);
             const atr = calcATR(sym);
+            const adx = calcADX(sym);
             const volTrend = calcVolumeTrend(sym, data.volume);
             const momentum = calcMomentum(sym);
+            const decorrelation = calcDecorrelation(sym);
             
-            if (!rsi || !atr || !volTrend || !momentum) return null;
+            if (!rsi || !atr || !adx || !volTrend || !momentum) return null;
             
             const volatilityPct = (atr / data.price) * 100;
             if (volatilityPct < 0.3 || volatilityPct > 5) return null;
@@ -923,15 +997,30 @@
             
             let volumeSignal = volTrend > 150 ? 1 : 0;
             let momentumSignal = momentum > 0.5 ? 1 : 0;
+            let adxSignal = adx > 20 ? 1 : 0;
+            let decorrelationSignal = decorrelation && decorrelation > 2 ? 1 : 0;
             
-            const score = (rsiSignal * 33 + volumeSignal * 33 + momentumSignal * 34);
+            let weights = { rsi: 0.2, volume: 0.2, momentum: 0.2, adx: 0.2, decorrelation: 0.2 };
+            
+            if (state.regime === 'strong_bull' || state.regime === 'strong_bear') {
+                weights = { rsi: 0.15, volume: 0.25, momentum: 0.35, adx: 0.15, decorrelation: 0.1 };
+            } else if (state.regime === 'ranging') {
+                weights = { rsi: 0.35, volume: 0.35, momentum: 0.1, adx: 0.1, decorrelation: 0.1 };
+            }
+            
+            const score = (rsiSignal * weights.rsi + volumeSignal * weights.volume + 
+                          momentumSignal * weights.momentum + adxSignal * weights.adx +
+                          decorrelationSignal * weights.decorrelation) * 100;
+            
             const convergent = score >= 70 && volumeSignal === 1;
             
             return {
                 rsi: { value: rsi },
                 volume: { value: volTrend },
                 momentum: { value: momentum },
+                adx: { value: adx },
                 volatility: { value: volatilityPct },
+                decorrelation: decorrelation || 0,
                 score: score,
                 convergent: convergent,
                 spoofCheck: spoofCheck
@@ -951,6 +1040,8 @@
         // ==========================================
         
         async function scan() {
+            if (!systemRunning) return;
+            
             log('🔍 Scanning...', 'info');
             
             const data = await fetchData();
@@ -959,15 +1050,71 @@
             state.btcData = data['BTCUSDT'];
             updateHistory('BTCUSDT', state.btcData);
             
-            state.signals = [];
+            // Régime
+            state.regime = detectRegime();
+            const regimeNames = {
+                strong_bull: 'TENDANCE HAUSSIÈRE',
+                strong_bear: 'TENDANCE BAISSIÈRE',
+                ranging: 'RANGE',
+                high_volatility: 'VOLATILITÉ EXTRÊME',
+                neutral: 'NEUTRE'
+            };
+            const regimeDescs = {
+                strong_bull: 'Momentum fort',
+                strong_bear: 'Baisse marquée',
+                ranging: 'Consolidation',
+                high_volatility: 'News/Events',
+                neutral: 'Équilibré'
+            };
+            document.getElementById('regime-name').textContent = regimeNames[state.regime];
+            document.getElementById('regime-desc').textContent = regimeDescs[state.regime];
             
-            // Scan top pairs
-            const topPairs = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT'];
+            const adx = calcADX('BTCUSDT');
+            const momentum = calcMomentum('BTCUSDT');
+            document.getElementById('adx').textContent = adx ? adx.toFixed(1) : '--';
+            document.getElementById('trend').textContent = momentum && momentum > 0 ? 'BULL' : 'BEAR';
+            
+            // Ranking
+            state.ranking = [];
+            const anomalies = [];
+            
+            for (const sym of PAIRS) {
+                if (!data[sym]) continue;
+                updateHistory(sym, data[sym]);
+                
+                const score = calcOptimalScore(sym, data[sym]);
+                state.ranking.push({
+                    symbol: sym.replace('USDT', ''),
+                    score: score,
+                    volatility: data[sym].priceChange,
+                    volume: data[sym].quoteVolume / 1000000,
+                    momentum: calcMomentum(sym) || 0
+                });
+                
+                const decorr = calcDecorrelation(sym);
+                if (decorr && decorr > 2) {
+                    anomalies.push({
+                        symbol: sym.replace('USDT', ''),
+                        decorrelation: decorr
+                    });
+                }
+            }
+            
+            state.ranking.sort((a, b) => b.score - a.score);
+            if (state.ranking.length > 0) {
+                document.getElementById('top-crypto').textContent = state.ranking[0].symbol;
+            }
+            
+            document.getElementById('anomalies-count').textContent = anomalies.length;
+            renderRanking();
+            renderAnomalies(anomalies);
+            
+            // Scan signals (top 5)
+            state.signals = [];
+            const topPairs = state.ranking.slice(0, 5).map(r => r.symbol + 'USDT');
             
             for (const sym of topPairs) {
                 if (!data[sym]) continue;
-                
-                updateHistory(sym, data[sym]);
                 
                 const conv = calcConvergence(sym, data[sym]);
                 if (!conv || !conv.convergent) continue;
@@ -993,8 +1140,6 @@
                 const netProfit = avgProfit - fees;
                 
                 if (netProfit > 0) {
-                    log(`👑 SIGNAL: ${sym} Score:${conv.score.toFixed(0)}%`, 'success');
-                    
                     const signal = {
                         symbol: sym.replace('USDT', ''),
                         fullSym: sym,
@@ -1006,13 +1151,15 @@
                         targetProfit: targetProfit,
                         positionSize: positionSize,
                         entryLevels: entryLevels,
-                        isElite: conv.score >= 85 && duration['5min'] > 80
+                        isElite: conv.score >= 85
                     };
                     
                     state.signals.push(signal);
                     
-                    // ENVOYER NOTIFICATION TELEGRAM
-                    await sendTelegramNotification(signal);
+                    log(`👑 SIGNAL: ${sym} Score:${conv.score.toFixed(0)}%`, 'success');
+                    
+                    // NOTIFICATION TELEGRAM
+                    await sendSignalNotification(signal);
                 }
             }
             
@@ -1021,6 +1168,50 @@
             saveState();
             
             log(`✅ Scan terminé: ${state.signals.length} signals`, 'success');
+        }
+
+        function renderRanking() {
+            const con = document.getElementById('ranking');
+            con.innerHTML = '';
+            
+            state.ranking.slice(0, 10).forEach((item, i) => {
+                const div = document.createElement('div');
+                div.style.cssText = 'background: rgba(0,255,136,0.05); border: 2px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px;';
+                if (i < 3) div.style.cssText += 'border-color: var(--gold); background: rgba(255,215,0,0.1);';
+                
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <div style="font-weight: 900; font-size: 1.2rem;">#${i + 1} ${item.symbol}</div>
+                        <div style="font-family: 'Roboto Mono', monospace; font-weight: 900; color: ${i < 3 ? 'var(--gold)' : 'var(--primary)'};">${item.score}</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #aaa;">
+                        <div>Vol: ${item.volume.toFixed(0)}M</div>
+                        <div>Mom: ${item.momentum > 0 ? '+' : ''}${item.momentum.toFixed(2)}%</div>
+                    </div>
+                `;
+                
+                con.appendChild(div);
+            });
+        }
+
+        function renderAnomalies(anomalies) {
+            const con = document.getElementById('anomalies');
+            con.innerHTML = '';
+            
+            if (anomalies.length === 0) {
+                con.innerHTML = '<div style="text-align: center; padding: 20px; color: #666; font-size: 0.8rem;">Aucune anomalie</div>';
+                return;
+            }
+            
+            anomalies.sort((a, b) => b.decorrelation - a.decorrelation).slice(0, 5).forEach(anom => {
+                const div = document.createElement('div');
+                div.style.cssText = 'background: rgba(255,0,128,0.05); border: 1px solid var(--accent); border-radius: 8px; padding: 10px; margin-bottom: 8px;';
+                div.innerHTML = `
+                    <div style="font-weight: 700; margin-bottom: 4px;">${anom.symbol}</div>
+                    <div style="font-size: 0.75rem; color: #aaa;">Décorrélation: ${anom.decorrelation.toFixed(1)}</div>
+                `;
+                con.appendChild(div);
+            });
         }
 
         function render() {
@@ -1032,8 +1223,6 @@
             }
             
             con.innerHTML = '';
-            state.signals.sort((a, b) => b.indicators.score - a.indicators.score);
-            
             state.signals.forEach((sig, i) => {
                 const card = document.createElement('div');
                 card.className = `signal-card ${sig.isElite ? 'elite' : ''}`;
@@ -1047,23 +1236,19 @@
                     <div style="background: rgba(255,0,128,0.1); border: 2px solid var(--accent); border-radius: 10px; padding: 12px; margin-bottom: 12px; text-align: center;">
                         <div style="font-size: 0.8rem; color: var(--accent); font-weight: 700; margin-bottom: 8px;">⏱️ DURÉE ESTIMÉE</div>
                         <div style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--accent);">${sig.duration.best}</div>
-                        <div style="font-size: 0.75rem; color: #aaa; margin-top: 5px;">
-                            5min:${sig.duration['5min']}% • 15min:${sig.duration['15min']}%
-                        </div>
                     </div>
                     
                     <div class="profit-box">
-                        <div class="label">Profit Estimé (+${sig.targetProfit.toFixed(1)}%)</div>
+                        <div style="font-size: 0.8rem; color: #888; margin-bottom: 6px;">Profit (+${sig.targetProfit.toFixed(1)}%)</div>
                         <div class="amount">+${sig.estimatedProfit.toFixed(2)}€</div>
                     </div>
                     
                     <div style="text-align: center; font-size: 0.85rem; color: #aaa; margin-bottom: 12px;">
-                        📱 Notification Telegram envoyée !<br>
-                        Consulte ton bot pour les détails
+                        📱 Notification Telegram envoyée !
                     </div>
                     
                     <button class="btn-execute" onclick="execute(${i})">
-                        👑 EXÉCUTÉ
+                        ✅ MARQUER EXÉCUTÉ
                     </button>
                 `;
                 
@@ -1079,12 +1264,6 @@
             state.trades++;
             state.profit += profit;
             state.wins++;
-            
-            state.backtestData.push({
-                symbol: sig.symbol,
-                profit: profit,
-                timestamp: Date.now()
-            });
             
             log(`✅ ${sig.symbol} +${profit.toFixed(2)}€`, 'success');
             
@@ -1110,48 +1289,22 @@
         }
 
         // ==========================================
-        // AUTO SAVE
+        // AUTO SAVE & INIT
         // ==========================================
         
-        // Sauvegarder automatiquement toutes les 30 secondes
-        setInterval(() => {
-            saveState();
-        }, 30000);
+        setInterval(saveState, 30000); // Sauvegarde automatique toutes les 30s
+        window.addEventListener('beforeunload', saveState);
 
-        // Sauvegarder avant de fermer la page
-        window.addEventListener('beforeunload', () => {
-            saveState();
-        });
-
-        // ==========================================
-        // INIT
-        // ==========================================
-        
-        log('👑 ULTIMATE PRO System', 'success');
-        log('💾 Persistance activée - Les données ne s\'effacent jamais', 'success');
-        log('📱 Initialisation Telegram...', 'telegram');
-        
-        initTelegram().then(success => {
-            if (success) {
-                log('✅ Système prêt - Notifications Telegram actives', 'success');
-            }
-        });
+        log('👑 ULTIMATE PRO System Initialized', 'success');
+        log('💾 Persistance GitHub activée', 'success');
+        log('📱 Telegram Chat ID: ' + TELEGRAM_CHAT_ID, 'telegram');
+        log('⚡ Appuyez sur START pour démarrer', 'warning');
         
         updateUI();
         document.getElementById('notif-count').textContent = notificationsSent;
         
-        // Premier scan après 3 secondes
-        setTimeout(scan, 3000);
-        
-        // Scans réguliers toutes les 60 secondes
-        let countdown = 60;
-        setInterval(() => {
-            countdown--;
-            if (countdown <= 0) {
-                countdown = 60;
-                scan();
-            }
-        }, 1000);
+        // Charger l'état sauvegardé au démarrage
+        loadState();
     </script>
 </body>
 </html>
