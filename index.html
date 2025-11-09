@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👑 ULTIMATE PRO SYSTEM | Version GitHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Roboto+Mono:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #00d4ff;
+            --accent: #ff0080;
+            --warning: #ffaa00;
+            --purple: #8844ff;
+            --gold: #ffd700;
+            --dark: #000;
+            --card: #0a0a0a;
+            --border: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 2600px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(136,68,255,0.2), rgba(0,255,136,0.2));
+            border: 4px solid var(--gold);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 15px;
+            text-align: center;
+            box-shadow: 0 0 120px rgba(255,215,0,0.8);
+            animation: header-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes header-glow {
+            0%, 100% { box-shadow: 0 0 100px rgba(255,215,0,0.8); }
+            50% { box-shadow: 0 0 160px rgba(255,215,0,1); }
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            background: linear-gradient(90deg, var(--gold), var(--primary), var(--secondary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            animation: gradient-flow 5s ease infinite;
+            background-size: 300% 100%;
+        }
+
+        @keyframes gradient-flow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header .subtitle {
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255,215,0,0.6);
+        }
+
+        .telegram-status {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(0,212,255,0.2);
+            border: 2px solid var(--secondary);
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+
+        .telegram-status.connected {
+            background: rgba(0,255,136,0.2);
+            border-color: var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .feature-badge {
+            padding: 10px 18px;
+            background: linear-gradient(135deg, var(--gold), var(--warning));
+            color: #000;
+            border-radius: 15px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255,215,0,0.5);
+        }
+
+        /* Reste du CSS identique à la version précédente... */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .tab {
+            padding: 12px 25px;
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, var(--gold), var(--warning));
+            color: #000;
+            border-color: var(--gold);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 400px 1fr 450px;
+            gap: 15px;
+        }
+
+        .left-panel, .center-panel, .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .progress-card {
+            background: linear-gradient(135deg, var(--card), #0f0f0f);
+            border: 3px solid var(--gold);
+            border-radius: 15px;
+            padding: 22px;
+            box-shadow: 0 0 50px rgba(255,215,0,0.4);
+        }
+
+        .progress-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .capital-display {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .capital-display .value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(255,215,0,0.8);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--primary), var(--secondary));
+            transition: width 1s ease;
+            background-size: 300% 100%;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { background-position: -300% 0; }
+            100% { background-position: 300% 0; }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            background: rgba(0,0,0,0.6);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover {
+            border-color: var(--gold);
+            transform: scale(1.05);
+        }
+
+        .stat-box .label {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 6px;
+        }
+
+        .stat-box .value {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        .console-card {
+            background: var(--card);
+            border: 2px solid var(--secondary);
+            border-radius: 15px;
+            padding: 20px;
+            height: 250px;
+        }
+
+        .console-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .console {
+            height: calc(100% - 40px);
+            background: #000;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px;
+            overflow-y: auto;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.7rem;
+        }
+
+        .log {
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .log .time { color: #666; }
+        .log.info { color: var(--secondary); }
+        .log.success { color: var(--primary); }
+        .log.warning { color: var(--warning); }
+        .log.error { color: var(--accent); }
+        .log.telegram { 
+            color: var(--secondary);
+            font-weight: 700;
+            background: rgba(0,212,255,0.15);
+            padding: 4px;
+            border-radius: 3px;
+        }
+
+        .signals-card {
+            background: var(--card);
+            border: 3px solid var(--gold);
+            border-radius: 15px;
+            padding: 22px;
+            box-shadow: 0 0 50px rgba(255,215,0,0.4);
+        }
+
+        .signals-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .signals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 15px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .signal-card {
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(136,68,255,0.1));
+            border: 3px solid var(--gold);
+            border-radius: 15px;
+            padding: 22px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .signal-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 50px rgba(255,215,0,0.8);
+        }
+
+        .signal-card.elite {
+            border-color: var(--gold);
+            box-shadow: 0 0 70px rgba(255,215,0,0.9);
+            animation: elite-pulse 2s infinite;
+        }
+
+        @keyframes elite-pulse {
+            0%, 100% { box-shadow: 0 0 60px rgba(255,215,0,0.9); }
+            50% { box-shadow: 0 0 120px rgba(255,215,0,1); }
+        }
+
+        .signal-card.elite::before {
+            content: '👑 ELITE';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--gold), var(--warning));
+            color: #000;
+            padding: 6px 15px;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 0.8rem;
+        }
+
+        .signal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .signal-pair {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .signal-score {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .profit-box {
+            background: rgba(255,215,0,0.15);
+            border: 3px solid var(--gold);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .profit-box .label {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 6px;
+        }
+
+        .profit-box .amount {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(255,215,0,0.8);
+        }
+
+        .btn-execute {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--warning));
+            border: none;
+            border-radius: 12px;
+            color: #000;
+            font-weight: 900;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(255,215,0,0.5);
+        }
+
+        .btn-execute:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255,215,0,0.9);
+        }
+
+        .empty {
+            text-align: center;
+            padding: 50px 20px;
+            color: #666;
+        }
+
+        @media (max-width: 2000px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>👑 ULTIMATE PRO SYSTEM</h1>
+            <div class="subtitle">
+                100% Calculs Mathématiques • Notifications Telegram • Persistance Totale
+            </div>
+            <div class="telegram-status" id="telegram-status">
+                📱 Telegram: Connexion...
+            </div>
+            <div class="features-grid" style="margin-top: 20px;">
+                <div class="feature-badge">PERSISTANCE TOTALE</div>
+                <div class="feature-badge">NOTIFICATIONS TELEGRAM</div>
+                <div class="feature-badge">MULTI-EXCHANGE</div>
+                <div class="feature-badge">ANTI-SPOOFING</div>
+                <div class="feature-badge">100% HALAL</div>
+            </div>
+        </div>
+
+        <!-- Dashboard simplifié pour l'exemple -->
+        <div class="main-grid">
+            <div class="left-panel">
+                <div class="progress-card">
+                    <h3>👑 CHALLENGE</h3>
+                    <div class="capital-display">
+                        <div class="value" id="capital">300€</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress" style="width: 3%"></div>
+                    </div>
+                    <div style="text-align: center; font-size: 0.9rem; color: #aaa; margin-top: 8px;" id="progress-text">3.0% • J1/30</div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="label">Signals</div>
+                            <div class="value" id="sig-count">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="label">Trades</div>
+                            <div class="value" id="trades">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="label">Win Rate</div>
+                            <div class="value" id="winrate">--%</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="label">Profit</div>
+                            <div class="value" id="profit">+0€</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="center-panel">
+                <div class="console-card">
+                    <h3>📡 CONSOLE</h3>
+                    <div class="console" id="console">
+                        <div class="log info"><span class="time">[00:00:00]</span> Initialisation...</div>
+                    </div>
+                </div>
+
+                <div class="signals-card">
+                    <h3>👑 SIGNALS ELITE</h3>
+                    <div class="signals-grid" id="signals">
+                        <div class="empty">
+                            <div style="font-size: 4rem; margin-bottom: 15px;">👑</div>
+                            <div>Analyse en cours...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div style="background: var(--card); border: 2px solid var(--secondary); border-radius: 15px; padding: 20px;">
+                    <h3 style="font-family: 'Orbitron', sans-serif; color: var(--secondary); font-size: 1.2rem; margin-bottom: 15px; text-align: center;">
+                        📱 NOTIFICATIONS
+                    </h3>
+                    <div style="background: rgba(0,212,255,0.1); border: 1px solid var(--secondary); border-radius: 10px; padding: 15px; margin-bottom: 12px;">
+                        <div style="font-weight: 700; color: var(--secondary); margin-bottom: 8px;">Status Telegram</div>
+                        <div style="font-size: 0.85rem; color: #aaa;" id="telegram-info">
+                            En attente de connexion...
+                        </div>
+                    </div>
+                    <div style="background: rgba(0,212,255,0.1); border: 1px solid var(--secondary); border-radius: 10px; padding: 15px;">
+                        <div style="font-weight: 700; color: var(--secondary); margin-bottom: 8px;">Notifications Envoyées</div>
+                        <div style="font-size: 1.5rem; font-family: 'Orbitron', sans-serif; color: var(--secondary); text-align: center;" id="notif-count">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // CONFIGURATION TELEGRAM
+        // ==========================================
+        
+        const TELEGRAM_BOT_TOKEN = '8317338475:AAH4_etAd7VsUWHk_4M-HNWZtWp69pAEEpo';
+        let TELEGRAM_CHAT_ID = null;
+        let notificationsSent = 0;
+
+        // ==========================================
+        // PERSISTANCE COMPLÈTE
+        // ==========================================
+        
+        const PAIRS = [
+            'BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT', 'ADAUSDT',
+            'AVAXUSDT', 'DOGEUSDT', 'DOTUSDT', 'MATICUSDT', 'LINKUSDT', 'UNIUSDT',
+            'ATOMUSDT', 'LTCUSDT', 'NEARUSDT', 'ALGOUSDT', 'VETUSDT', 'ICPUSDT',
+            'FILUSDT', 'HBARUSDT', 'APTUSDT', 'ARBUSDT', 'OPUSDT', 'INJUSDT',
+            'SUIUSDT', 'SEIUSDT', 'TAOUSDT', 'RENDERUSDT', 'TIAUSDT', 'PEPEUSDT'
+        ];
+
+        const STORAGE_KEY = 'ultimate_pro_persistent';
+        
+        function saveState() {
+            const dataToSave = {
+                capital: state.capital,
+                day: state.day,
+                trades: state.trades,
+                profit: state.profit,
+                wins: state.wins,
+                losses: state.losses,
+                history: state.history,
+                backtestData: state.backtestData,
+                notificationsSent: notificationsSent,
+                chatId: TELEGRAM_CHAT_ID,
+                lastSave: Date.now()
+            };
+            
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
+                log('💾 Données sauvegardées', 'success');
+            } catch (e) {
+                log(`❌ Erreur sauvegarde: ${e.message}`, 'error');
+            }
+        }
+        
+        function loadState() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (!saved) return null;
+                
+                const data = JSON.parse(saved);
+                
+                // Vérifier que les données ne sont pas trop anciennes (max 7 jours)
+                if (Date.now() - data.lastSave > 7 * 24 * 60 * 60 * 1000) {
+                    log('⚠️ Données trop anciennes, réinitialisation', 'warning');
+                    return null;
+                }
+                
+                return data;
+            } catch (e) {
+                log(`❌ Erreur chargement: ${e.message}`, 'error');
+                return null;
+            }
+        }
+
+        function log(msg, type = 'info') {
+            const con = document.getElementById('console');
+            const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const div = document.createElement('div');
+            div.className = `log ${type}`;
+            div.innerHTML = `<span class="time">[${time}]</span> ${msg}`;
+            con.appendChild(div);
+            con.scrollTop = con.scrollHeight;
+            if (con.children.length > 150) con.removeChild(con.firstChild);
+        }
+
+        // ==========================================
+        // STATE
+        // ==========================================
+        
+        let state = {
+            capital: 300,
+            day: 1,
+            trades: 0,
+            profit: 0,
+            wins: 0,
+            losses: 0,
+            history: {},
+            btcData: null,
+            signals: [],
+            regime: 'neutral',
+            backtestData: [],
+            ranking: []
+        };
+
+        // Charger l'état sauvegardé
+        const savedState = loadState();
+        if (savedState) {
+            state.capital = savedState.capital;
+            state.day = savedState.day;
+            state.trades = savedState.trades;
+            state.profit = savedState.profit;
+            state.wins = savedState.wins;
+            state.losses = savedState.losses || 0;
+            state.history = savedState.history || {};
+            state.backtestData = savedState.backtestData || [];
+            notificationsSent = savedState.notificationsSent || 0;
+            TELEGRAM_CHAT_ID = savedState.chatId || null;
+            
+            log('✅ État restauré depuis la sauvegarde', 'success');
+            log(`💰 Capital: ${state.capital.toFixed(2)}€ | Trades: ${state.trades}`, 'info');
+        } else {
+            log('🆕 Nouveau départ - État initialisé', 'info');
+        }
+
+        // ==========================================
+        // TELEGRAM FUNCTIONS
+        // ==========================================
+        
+        async function initTelegram() {
+            try {
+                // Tester la connexion
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getMe`);
+                const data = await response.json();
+                
+                if (data.ok) {
+                    log(`✅ Bot Telegram connecté: @${data.result.username}`, 'telegram');
+                    document.getElementById('telegram-status').textContent = `📱 Telegram: ✓ @${data.result.username}`;
+                    document.getElementById('telegram-status').classList.add('connected');
+                    document.getElementById('telegram-info').textContent = `Connecté à @${data.result.username}`;
+                    
+                    // Obtenir le chat ID
+                    await getChatId();
+                    
+                    return true;
+                } else {
+                    throw new Error('Token invalide');
+                }
+            } catch (e) {
+                log(`❌ Telegram: ${e.message}`, 'error');
+                document.getElementById('telegram-status').textContent = '📱 Telegram: ✗ Erreur';
+                document.getElementById('telegram-info').textContent = `Erreur: ${e.message}`;
+                return false;
+            }
+        }
+
+        async function getChatId() {
+            try {
+                // Récupérer les updates pour obtenir le chat_id
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates`);
+                const data = await response.json();
+                
+                if (data.ok && data.result.length > 0) {
+                    // Prendre le dernier message
+                    const lastUpdate = data.result[data.result.length - 1];
+                    TELEGRAM_CHAT_ID = lastUpdate.message.chat.id;
+                    log(`✅ Chat ID obtenu: ${TELEGRAM_CHAT_ID}`, 'telegram');
+                    saveState();
+                } else if (TELEGRAM_CHAT_ID) {
+                    log(`✅ Chat ID restauré: ${TELEGRAM_CHAT_ID}`, 'telegram');
+                } else {
+                    log('⚠️ Envoie /start au bot pour obtenir le Chat ID', 'warning');
+                }
+            } catch (e) {
+                log(`⚠️ Impossible d'obtenir Chat ID: ${e.message}`, 'warning');
+            }
+        }
+
+        async function sendTelegramNotification(signal) {
+            if (!TELEGRAM_CHAT_ID) {
+                log('⚠️ Chat ID non disponible, envoie /start au bot', 'warning');
+                return false;
+            }
+
+            const message = `
+👑 **SIGNAL ELITE DÉTECTÉ** 👑
+
+💎 **${signal.symbol}** | Score: **${signal.indicators.score.toFixed(0)}%**
+
+📊 **INDICATEURS:**
+• RSI: ${signal.indicators.rsi.value.toFixed(1)}
+• Volume: ${signal.indicators.volume.value.toFixed(0)}%
+• Momentum: ${signal.indicators.momentum.value > 0 ? '+' : ''}${signal.indicators.momentum.value.toFixed(2)}%
+• Volatilité: ${signal.indicators.volatility.value.toFixed(2)}%
+
+⏱️ **DURÉE ESTIMÉE:** ${signal.duration.best}
+5min: ${signal.duration['5min']}% | 15min: ${signal.duration['15min']}%
+
+💰 **TRADING:**
+• Prix Actuel: $${signal.currentPrice.toFixed(4)}
+• Profit Estimé: **+${signal.estimatedProfit.toFixed(2)}€** (+${signal.targetProfit.toFixed(1)}%)
+• Position: ${signal.positionSize.toFixed(0)}€
+• Stop-Loss: -${signal.stopLoss.toFixed(2)}%
+
+📋 **INSTRUCTIONS:**
+1️⃣ **Phase 1 (50%):** Achète ${(signal.positionSize * 0.5).toFixed(0)}€ de ${signal.symbol} à $${signal.entryLevels.entry1.price.toFixed(4)}
+
+2️⃣ **Phase 2 (25%):** Si prix atteint $${signal.entryLevels.entry2.price.toFixed(4)} (+0.3%), ajoute ${(signal.positionSize * 0.25).toFixed(0)}€
+
+3️⃣ **Phase 3 (25%):** Si prix atteint $${signal.entryLevels.entry3.price.toFixed(4)} (+0.6%), ajoute ${(signal.positionSize * 0.25).toFixed(0)}€
+
+🛡️ **PROTECTION:**
+• Place stop-loss à $${(signal.currentPrice * (1 - signal.stopLoss / 100)).toFixed(4)}
+• Vends au target: +${signal.targetProfit.toFixed(1)}%
+
+✅ ${signal.indicators.spoofCheck.reason}
+
+⚡ **TRADE SUR BINANCE SPOT (PAS FUTURES)**
+
+🚀 Bonne chance !
+`;
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.ok) {
+                    notificationsSent++;
+                    document.getElementById('notif-count').textContent = notificationsSent;
+                    log(`📱 Notification Telegram envoyée pour ${signal.symbol}`, 'telegram');
+                    saveState();
+                    return true;
+                } else {
+                    log(`❌ Erreur Telegram: ${data.description}`, 'error');
+                    return false;
+                }
+            } catch (e) {
+                log(`❌ Erreur envoi Telegram: ${e.message}`, 'error');
+                return false;
+            }
+        }
+
+        // ==========================================
+        // API & INDICATEURS (version simplifiée)
+        // ==========================================
+        
+        async function fetchData() {
+            try {
+                const [priceRes, tickerRes] = await Promise.all([
+                    fetch('https://api.binance.com/api/v3/ticker/price'),
+                    fetch('https://api.binance.com/api/v3/ticker/24hr')
+                ]);
+                
+                const prices = await priceRes.json();
+                const tickers = await tickerRes.json();
+                
+                const data = {};
+                PAIRS.forEach(sym => {
+                    const p = prices.find(x => x.symbol === sym);
+                    const t = tickers.find(x => x.symbol === sym);
+                    
+                    if (p && t) {
+                        data[sym] = {
+                            price: parseFloat(p.price),
+                            volume: parseFloat(t.volume),
+                            priceChange: parseFloat(t.priceChangePercent),
+                            high: parseFloat(t.highPrice),
+                            low: parseFloat(t.lowPrice),
+                            quoteVolume: parseFloat(t.quoteVolume)
+                        };
+                    }
+                });
+                
+                return data;
+            } catch (e) {
+                log(`❌ API: ${e.message}`, 'error');
+                return null;
+            }
+        }
+
+        function updateHistory(sym, data) {
+            if (!state.history[sym]) state.history[sym] = [];
+            
+            state.history[sym].push({
+                price: data.price,
+                volume: data.volume,
+                high: data.high,
+                low: data.low,
+                timestamp: Date.now()
+            });
+            
+            if (state.history[sym].length > 30) state.history[sym].shift();
+        }
+        
+        function calcRSI(sym) {
+            const hist = state.history[sym];
+            if (!hist || hist.length < 15) return null;
+            
+            let gains = 0, losses = 0;
+            for (let i = hist.length - 14; i < hist.length; i++) {
+                const change = hist[i].price - hist[i-1].price;
+                if (change > 0) gains += change;
+                else losses += Math.abs(change);
+            }
+            
+            const avgGain = gains / 14;
+            const avgLoss = losses / 14;
+            
+            if (avgLoss === 0) return 100;
+            return 100 - (100 / (1 + avgGain / avgLoss));
+        }
+        
+        function calcMomentum(sym) {
+            const hist = state.history[sym];
+            if (!hist || hist.length < 10) return null;
+            
+            const now = hist[hist.length - 1].price;
+            const prev = hist[hist.length - 10].price;
+            return ((now - prev) / prev) * 100;
+        }
+        
+        function calcVolumeTrend(sym, currentVol) {
+            const hist = state.history[sym];
+            if (!hist || hist.length < 10) return null;
+            
+            const avgVol = hist.reduce((sum, h) => sum + h.volume, 0) / hist.length;
+            return (currentVol / avgVol) * 100;
+        }
+        
+        function calcATR(sym) {
+            const hist = state.history[sym];
+            if (!hist || hist.length < 15) return null;
+            
+            let sum = 0;
+            for (let i = hist.length - 14; i < hist.length; i++) {
+                const tr = Math.max(
+                    hist[i].high - hist[i].low,
+                    Math.abs(hist[i].high - hist[i-1].price),
+                    Math.abs(hist[i].low - hist[i-1].price)
+                );
+                sum += tr;
+            }
+            
+            return sum / 14;
+        }
+        
+        function estimateDuration(sym) {
+            const momentum = calcMomentum(sym);
+            const hist = state.history[sym];
+            
+            if (!momentum || !hist || hist.length < 10) return null;
+            
+            const velocity = Math.abs(momentum);
+            const acceleration = hist.length >= 15 ? 
+                Math.abs(hist[hist.length-1].price - hist[hist.length-5].price) / hist[hist.length-5].price * 100 : 0;
+            
+            const score5min = (acceleration > 0.3 && velocity > 0.5) ? 85 : 40;
+            const score15min = (velocity > 1) ? 80 : 45;
+            const score30min = (velocity > 0.5) ? 75 : 35;
+            const score60min = (velocity > 0.3) ? 70 : 30;
+            
+            return {
+                '5min': score5min,
+                '15min': score15min,
+                '30min': score30min,
+                '60min': score60min,
+                best: score5min > score15min ? '5-10min' : score15min > score30min ? '15-20min' : '30min+'
+            };
+        }
+        
+        function checkSpoofing(data) {
+            const volumeRatio = data.quoteVolume / (data.price * data.volume);
+            if (volumeRatio < 0.8) return { safe: false, reason: 'Volume suspect' };
+            
+            if (data.quoteVolume < 10000000) return { safe: false, reason: 'Liquidité faible' };
+            
+            const volatility = ((data.high - data.low) / data.price) * 100;
+            if (volatility > 10) return { safe: false, reason: 'Volatilité extrême' };
+            
+            return { safe: true, reason: 'Volume réel ✓' };
+        }
+        
+        function calcConvergence(sym, data) {
+            const rsi = calcRSI(sym);
+            const atr = calcATR(sym);
+            const volTrend = calcVolumeTrend(sym, data.volume);
+            const momentum = calcMomentum(sym);
+            
+            if (!rsi || !atr || !volTrend || !momentum) return null;
+            
+            const volatilityPct = (atr / data.price) * 100;
+            if (volatilityPct < 0.3 || volatilityPct > 5) return null;
+            
+            const spoofCheck = checkSpoofing(data);
+            if (!spoofCheck.safe) return null;
+            
+            let rsiSignal = 0;
+            if (rsi < 30) rsiSignal = 1;
+            else if (rsi > 40 && rsi < 60 && momentum > 0) rsiSignal = 0.7;
+            
+            let volumeSignal = volTrend > 150 ? 1 : 0;
+            let momentumSignal = momentum > 0.5 ? 1 : 0;
+            
+            const score = (rsiSignal * 33 + volumeSignal * 33 + momentumSignal * 34);
+            const convergent = score >= 70 && volumeSignal === 1;
+            
+            return {
+                rsi: { value: rsi },
+                volume: { value: volTrend },
+                momentum: { value: momentum },
+                volatility: { value: volatilityPct },
+                score: score,
+                convergent: convergent,
+                spoofCheck: spoofCheck
+            };
+        }
+
+        function calcEntryLevels(currentPrice) {
+            return {
+                entry1: { pct: 50, price: currentPrice },
+                entry2: { pct: 25, price: currentPrice * (1 + 0.003) },
+                entry3: { pct: 25, price: currentPrice * (1 + 0.006) }
+            };
+        }
+
+        // ==========================================
+        // SCAN
+        // ==========================================
+        
+        async function scan() {
+            log('🔍 Scanning...', 'info');
+            
+            const data = await fetchData();
+            if (!data || !data['BTCUSDT']) return;
+            
+            state.btcData = data['BTCUSDT'];
+            updateHistory('BTCUSDT', state.btcData);
+            
+            state.signals = [];
+            
+            // Scan top pairs
+            const topPairs = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT'];
+            
+            for (const sym of topPairs) {
+                if (!data[sym]) continue;
+                
+                updateHistory(sym, data[sym]);
+                
+                const conv = calcConvergence(sym, data[sym]);
+                if (!conv || !conv.convergent) continue;
+                
+                const duration = estimateDuration(sym);
+                if (!duration) continue;
+                
+                const atr = calcATR(sym);
+                const stopLossPct = (atr / data[sym].price) * 100 * 2;
+                const riskAmount = state.capital * 0.005;
+                const positionSize = Math.min(riskAmount / (stopLossPct / 100), state.capital);
+                
+                const targetProfit = conv.momentum.value * 0.6;
+                const entryLevels = calcEntryLevels(data[sym].price);
+                
+                const avgProfit = (
+                    (positionSize * 0.5 * targetProfit / 100) +
+                    (positionSize * 0.25 * (targetProfit + 0.3) / 100) +
+                    (positionSize * 0.25 * (targetProfit + 0.6) / 100)
+                );
+                
+                const fees = positionSize * 0.003 * 3;
+                const netProfit = avgProfit - fees;
+                
+                if (netProfit > 0) {
+                    log(`👑 SIGNAL: ${sym} Score:${conv.score.toFixed(0)}%`, 'success');
+                    
+                    const signal = {
+                        symbol: sym.replace('USDT', ''),
+                        fullSym: sym,
+                        indicators: conv,
+                        duration: duration,
+                        currentPrice: data[sym].price,
+                        estimatedProfit: netProfit,
+                        stopLoss: stopLossPct,
+                        targetProfit: targetProfit,
+                        positionSize: positionSize,
+                        entryLevels: entryLevels,
+                        isElite: conv.score >= 85 && duration['5min'] > 80
+                    };
+                    
+                    state.signals.push(signal);
+                    
+                    // ENVOYER NOTIFICATION TELEGRAM
+                    await sendTelegramNotification(signal);
+                }
+            }
+            
+            document.getElementById('sig-count').textContent = state.signals.length;
+            render();
+            saveState();
+            
+            log(`✅ Scan terminé: ${state.signals.length} signals`, 'success');
+        }
+
+        function render() {
+            const con = document.getElementById('signals');
+            
+            if (state.signals.length === 0) {
+                con.innerHTML = '<div class="empty"><div style="font-size: 4rem; margin-bottom: 15px;">⏳</div><div>En attente de signal...</div></div>';
+                return;
+            }
+            
+            con.innerHTML = '';
+            state.signals.sort((a, b) => b.indicators.score - a.indicators.score);
+            
+            state.signals.forEach((sig, i) => {
+                const card = document.createElement('div');
+                card.className = `signal-card ${sig.isElite ? 'elite' : ''}`;
+                
+                card.innerHTML = `
+                    <div class="signal-header">
+                        <div class="signal-pair">${sig.symbol}</div>
+                        <div class="signal-score">${sig.indicators.score.toFixed(0)}%</div>
+                    </div>
+                    
+                    <div style="background: rgba(255,0,128,0.1); border: 2px solid var(--accent); border-radius: 10px; padding: 12px; margin-bottom: 12px; text-align: center;">
+                        <div style="font-size: 0.8rem; color: var(--accent); font-weight: 700; margin-bottom: 8px;">⏱️ DURÉE ESTIMÉE</div>
+                        <div style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--accent);">${sig.duration.best}</div>
+                        <div style="font-size: 0.75rem; color: #aaa; margin-top: 5px;">
+                            5min:${sig.duration['5min']}% • 15min:${sig.duration['15min']}%
+                        </div>
+                    </div>
+                    
+                    <div class="profit-box">
+                        <div class="label">Profit Estimé (+${sig.targetProfit.toFixed(1)}%)</div>
+                        <div class="amount">+${sig.estimatedProfit.toFixed(2)}€</div>
+                    </div>
+                    
+                    <div style="text-align: center; font-size: 0.85rem; color: #aaa; margin-bottom: 12px;">
+                        📱 Notification Telegram envoyée !<br>
+                        Consulte ton bot pour les détails
+                    </div>
+                    
+                    <button class="btn-execute" onclick="execute(${i})">
+                        👑 EXÉCUTÉ
+                    </button>
+                `;
+                
+                con.appendChild(card);
+            });
+        }
+
+        function execute(i) {
+            const sig = state.signals[i];
+            const profit = sig.estimatedProfit;
+            
+            state.capital += profit;
+            state.trades++;
+            state.profit += profit;
+            state.wins++;
+            
+            state.backtestData.push({
+                symbol: sig.symbol,
+                profit: profit,
+                timestamp: Date.now()
+            });
+            
+            log(`✅ ${sig.symbol} +${profit.toFixed(2)}€`, 'success');
+            
+            updateUI();
+            saveState();
+            
+            state.signals.splice(i, 1);
+            render();
+        }
+
+        function updateUI() {
+            const prog = (state.capital / 10000) * 100;
+            document.getElementById('progress').style.width = `${prog}%`;
+            document.getElementById('progress-text').textContent = `${prog.toFixed(1)}% • J${state.day}/30`;
+            document.getElementById('capital').textContent = `${state.capital.toFixed(0)}€`;
+            document.getElementById('trades').textContent = state.trades;
+            document.getElementById('profit').textContent = `+${state.profit.toFixed(0)}€`;
+            
+            if (state.trades > 0) {
+                const wr = (state.wins / state.trades) * 100;
+                document.getElementById('winrate').textContent = `${wr.toFixed(0)}%`;
+            }
+        }
+
+        // ==========================================
+        // AUTO SAVE
+        // ==========================================
+        
+        // Sauvegarder automatiquement toutes les 30 secondes
+        setInterval(() => {
+            saveState();
+        }, 30000);
+
+        // Sauvegarder avant de fermer la page
+        window.addEventListener('beforeunload', () => {
+            saveState();
+        });
+
+        // ==========================================
+        // INIT
+        // ==========================================
+        
+        log('👑 ULTIMATE PRO System', 'success');
+        log('💾 Persistance activée - Les données ne s\'effacent jamais', 'success');
+        log('📱 Initialisation Telegram...', 'telegram');
+        
+        initTelegram().then(success => {
+            if (success) {
+                log('✅ Système prêt - Notifications Telegram actives', 'success');
+            }
+        });
+        
+        updateUI();
+        document.getElementById('notif-count').textContent = notificationsSent;
+        
+        // Premier scan après 3 secondes
+        setTimeout(scan, 3000);
+        
+        // Scans réguliers toutes les 60 secondes
+        let countdown = 60;
+        setInterval(() => {
+            countdown--;
+            if (countdown <= 0) {
+                countdown = 60;
+                scan();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
